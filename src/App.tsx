@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useEffect, Suspense } from 'react';
+import './App.scss';
+import state from './store'
+import { Canvas } from '@react-three/fiber';
+import { Intro } from './components/Intro/Intro'
+import { Block } from './components/Blocks'
+import { LinkedinCube } from './components/Intro/SocialCubes'
+import { Html } from '@react-three/drei';
 
-function App() {
+const App: React.FC = () => {
+  const scrollArea = useRef<any>()
+  const onScroll = (e: any) => (state.top.current = e.target.scrollTop)
+  useEffect(() => void onScroll({ target: scrollArea.current }), [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Canvas linear orthographic camera={{ zoom: state.zoom, position: [0, 0, 500] }}>
+        <Suspense fallback={<Html>loading...</Html>}>
+          <Block factor={1.5} offset={0}>
+            <Intro />
+          </Block>
+          <Block factor={2} offset={0}>
+            <LinkedinCube />
+          </Block>
+        </Suspense>
+      </Canvas>
+      <div className='app__scroll-area' ref={scrollArea} onScroll={onScroll}>
+        <div style={{ height: `${state.pages * 100}vh` }} />
+      </div>
+
+    </>
+  )
 }
 
 export default App;
