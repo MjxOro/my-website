@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap');
+$transition:#57595D; 
+
 html,
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 #root {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: white;
+  background-color: #1F2833;
 }
 canvas {
   position: absolute;
@@ -23,4 +27,7 @@ canvas {
     height: 100vh;
     overflow: auto;
   }
+}
+h1{
+  color:#1fbf87;
 }
