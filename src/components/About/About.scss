@@ -1,10 +1,67 @@
 @use '../../partials/variables' as *;
 
-// .about{
-//   display: flex;
-//   flex-direction: column;
-//   &__img{
-//     height: 25%;
-//     width: 25%;
-//   }
-// }
+.about{
+  pointer-events: none;
+  &__wrapper{
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid $h1Text;
+    width: 10rem;
+    height: 8rem;
+    @include tablet{
+      width: 13rem;
+      height: 11rem;
+      padding: 2rem
+    }
+    @include desktop{
+      width: 15rem;
+      height: 13rem;
+    }
+  }
+  &__img{
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+
+  }
+  &__description{
+    width: 75vw;
+    font-size: 12px;
+
+    @include tablet{
+      width: 25rem;
+      font-size: 24px;
+    }
+    @include desktop{
+      width: 45rem;
+    }
+  }
+  &__text{
+    font-size: 16px;
+    @include tablet{
+      font-size: 24px;
+    }
+  }
+  &__skill-wrapper{
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    @include tablet{
+      font-size: 24px;
+      flex-direction: row;
+    }
+  }
+  &__skill-list{
+    margin:0;
+    padding:0 1rem;
+    list-style: none;
+    & .about__skill::before{
+      content:"\21D2";
+      color: $h1Text;
+      font-weight: bold;
+      width: 1rem;
+      margin-left: -1rem;
+      margin-right: 1rem;
+    }
+  }
+}

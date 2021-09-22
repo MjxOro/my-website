@@ -1,4 +1,4 @@
-
+@use '../../partials/variables' as *;
 
 .intro{
   display: flex;
@@ -8,9 +8,14 @@
   &__name{
     font-size: 1.15rem;
     margin: 0;
-  }
-  &__text{
-    font-size: 1.15rem;
-    margin: 0;
+    @include tablet{
+      font-size: 36px;
+    }
+    @include desktop{
+      font-size: 42px;
+    }
+    @include desktop-break{
+      font-size: 60px;
+    }
   }
 }
