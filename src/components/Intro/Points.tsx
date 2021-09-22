@@ -17,6 +17,7 @@ export const Points: React.FC<any> = () => {
     points.current.position.x = cursorX / 2
     points.current.position.y = cursorY / 2
     points.current.rotation.x = Math.PI / 4
+    points.current.position.z = -10
   }
   useFrame(() => {
     points.current.rotation.y += 0.005

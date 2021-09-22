@@ -1,3 +1,5 @@
+@use './partials/variables' as *;
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap');
 $transition:#57595D; 
 
@@ -13,6 +15,7 @@ body {
   height: 100vh;
   overflow: hidden;
   background-color: #1F2833;
+  color: $normalText1;
 }
 canvas {
   position: absolute;
@@ -29,5 +32,5 @@ canvas {
   }
 }
 h1{
-  color:#1fbf87;
+  color: $normalText1;
 }

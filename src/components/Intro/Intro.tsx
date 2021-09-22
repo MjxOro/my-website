@@ -1,32 +1,23 @@
-import React, { useRef } from 'react'
 import { Html } from '@react-three/drei'
 import './Intro.scss'
-import { useFrame } from '@react-three/fiber'
-import { useSpring, animated } from 'react-spring'
+import { Block, useBlock } from '../Blocks'
+import { Shadow } from '@react-three/drei'
 
 export const Intro: React.FC = () => {
-
-  const styles = useSpring({
-    loop: true,
-    to: async next => {
-      await next({ transform: 'translateY(0rem)' });
-      await next({ transform: 'translateY(1rem)' });
-      await next({ transform: 'translateY(0rem)' });
-    },
-    from: { transform: 'translateY(-1)' },
-    config: { duration: 500 },
-
-
-  })
-
+  const { contentMaxWidth, margin } = useBlock()
   return (
-    <Html center >
-      <animated.section className='intro'>
-        <h1 className='intro__name'>Hello, World! My name is</h1>
-        <h1 className='intro__name'>Matthew Oro</h1>
-        <h1 className='intro__name'>I like to build cool things!</h1>
-      </animated.section>
-    </Html>
+    <group position={[0, 0, 0]}>
+      <Shadow scale={[contentMaxWidth, contentMaxWidth / 2.25, 1]} />
+      <Block factor={-1.5}>
+        <Html center={true}>
+          <section className='intro'>
+            <h1 className='intro__name'>Hello there!</h1>
+            <h1 className='intro__name'>I'm a full-stack web developer,</h1>
+            <h1 className='intro__name'>I like to build cool things.</h1>
+          </section>
+        </Html>
+      </Block>
+    </group>
   )
 
 }

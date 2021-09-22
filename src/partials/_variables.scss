@@ -1,0 +1,24 @@
+
+$transition:#57595D; 
+$background:#1F2833;
+$h1Text: #1fbf87;
+$normalText1: #C5C6C7;
+$normalText2: #FFFFFF;
+
+//Mixins
+@mixin tablet(){
+	@media (min-width:768px){
+		@content;
+	}
+}
+@mixin desktop(){
+	@media (min-width:1280px) {
+		@content;
+	}
+}
+@mixin desktop-break(){
+	@media (min-width:1400px) {
+		@content;
+	}
+}
+

@@ -1,9 +1,11 @@
-export const Plane: React.FC<any> = ({ color = "white", ...props }) => {
+
+
+export const Plane: React.FC<any> = ({ color, wireframe, ...props }) => {
   return (
     <>
       <mesh {...props}>
         <planeGeometry />
-        <meshBasicMaterial color={color} />
+        <meshStandardMaterial color={color} wireframe={wireframe} />
       </mesh >
     </>
   )

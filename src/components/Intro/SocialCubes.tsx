@@ -13,20 +13,18 @@ export const LinkedinCube: React.FC<any> = ({ children, color, ...props }) => {
   const refLinkedin = useRef<any>()
   const refGithub = useRef<any>()
   const { contentMaxWidth, margin, canvasWidth, mobile } = useBlock()
+  //Positions
   const mobilePosLinkedin: Array<any> = [- (canvasWidth - contentMaxWidth + margin) / 1.75, -(contentMaxWidth) / 1.75, 15]
   const mobilePosGithub: Array<any> = [(canvasWidth - contentMaxWidth + margin) / 1.75, -(contentMaxWidth) / 1.75, 15]
-  const posLinkedin: Array<any> = [- (canvasWidth - contentMaxWidth - margin), -(canvasWidth - contentMaxWidth - margin) / 1.5, 15]
-  const posGithub: Array<any> = [(canvasWidth - contentMaxWidth - margin), -(canvasWidth - contentMaxWidth - margin) / 1.5, 15]
+  const posLinkedin: Array<any> = [- (canvasWidth - contentMaxWidth - margin), -(canvasWidth - contentMaxWidth - margin) / 1.30, 15]
+  const posGithub: Array<any> = [(canvasWidth - contentMaxWidth - margin), -(canvasWidth - contentMaxWidth - margin) / 1.30, 15]
   const mobileScale: Array<number> = [0.5, 0.5, 0.5]
   //Animation
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime()
+  useFrame(() => {
     refLinkedin.current.rotation.y += 0.01
     refLinkedin.current.rotation.x += 0.01
-    // refLinkedin.current.position.y = (Math.sin(t) / 3)
     refGithub.current.rotation.y += 0.01
     refGithub.current.rotation.x += 0.01
-    // refGithub.current.position.y = (Math.sin(t) / 3)
   })
   //Handlers
   const handleHoverOn = () => setColorCubeL("#BABEF9")
@@ -41,7 +39,7 @@ export const LinkedinCube: React.FC<any> = ({ children, color, ...props }) => {
     <>
       <ambientLight intensity={1} />
       <group scale={mobile ? mobileScale : [1, 1, 1]} position={mobile ? mobilePosLinkedin : posLinkedin}>
-        <mesh ref={refLinkedin}   {...props}>
+        <mesh ref={refLinkedin} {...props}>
           <boxGeometry args={[1, 1, 1]} />
           <meshStandardMaterial map={linkedinTexture} color={colorCubeL} />
         </mesh>
