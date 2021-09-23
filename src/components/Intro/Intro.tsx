@@ -9,7 +9,7 @@ export const Intro: React.FC = () => {
     <group position={[0, 0, 0]}>
       <Shadow scale={[contentMaxWidth, contentMaxWidth / 2.25, 1]} />
       <Block factor={-1.5}>
-        <Html center={true}>
+        <Html center={true} className='intro'>
           <section className='intro'>
             <h1 className='intro__name'>Hello there!</h1>
             <h1 className='intro__name'>I'm a full-stack web developer,</h1>

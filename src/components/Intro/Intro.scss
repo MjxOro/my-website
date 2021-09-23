@@ -1,6 +1,7 @@
 @use '../../partials/variables' as *;
 
 .intro{
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
