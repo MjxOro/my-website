@@ -2,17 +2,10 @@ import React from 'react'
 import './About.scss'
 import { useBlock } from '../Blocks'
 import { Html } from '@react-three/drei'
-import { Plane } from '../Plane'
-import { useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three'
 
 
 export const About: React.FC<any> = () => {
-  const { mobile, contentMaxWidth, margin } = useBlock()
-  const mobileScale: Array<number> = [(contentMaxWidth - margin) / 1.8, (contentMaxWidth - margin) / 2, 1]
-  const normalScale: Array<number> = [4.5, 4, 1]
-  const largeScale: Array<number> = [5, 4.5, 1]
-  const map = useLoader(TextureLoader, './pfp.jpg')
+  const { mobile } = useBlock()
 
   return (
     <group>
@@ -26,10 +19,10 @@ export const About: React.FC<any> = () => {
       </Html>
       <Html className="about" center={mobile ? true : false} position={mobile ? null : window.innerWidth < 1280 ? [-4.5, 4, 1] : [-7.5, 2.25, 1]} >
         <p className="about__description">
-          Hello, world! My name is Matthew Oro and I enjoy building cool things
+          Hello, world! My name is Matthew Oro and I enjoy building things
           on the internet. Although I'm still new to this game, I am learning
-          and building new things to make my life easier and explore my creativity through developing
-          websites.</p>
+          and developing new things to make my life easier and explore my creativity through bulding websites.
+        </p>
       </Html>
       <Html className="about" position={mobile ? [-1.5, -1, 1] : window.innerWidth < 1280 ? [-4.5, -1, 1] : [-7.5, -1.25, 1]} >
         <p className="about__text">Tech I use to develop:</p>

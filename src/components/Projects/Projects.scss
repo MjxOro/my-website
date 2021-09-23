@@ -1,0 +1,69 @@
+@use '../../partials/variables' as *;
+
+.projects{
+  pointer-events: none;
+  &__title{
+    width: 100vw;
+    @include tablet{
+      font-size: 42px;
+    }
+  }
+  &__img{
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    @include tablet{
+      width: 24rem;
+      height: 24rem;
+    }
+    @include desktop{
+      width: 32rem;
+      height: 32rem;
+    }
+  }
+  &__description{
+    width: 13rem;
+    font-size: 16px;
+    text-align: center;
+    @include tablet{
+      font-size: 24px;
+    }
+    @include desktop{
+      font-size: 32px;
+      width: 30rem
+    }
+  }
+  &__tech-list{
+    list-style: none;
+    display:flex;
+    font-size: 12px;
+    @include tablet{
+      font-size: 16px;
+    }
+
+  }
+  &__tech{
+    margin-right: 1rem;
+    @include tablet{
+      margin-right: 2.5rem;
+    }
+  }
+  &__github-wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+
+  }
+  &__github{
+    cursor: pointer;
+    pointer-events: all;
+    font-size: 2rem;
+    &:hover{
+      color: $h1Text;
+    }
+    @include tablet{
+      font-size: 4rem;
+    }
+
+  }
+}

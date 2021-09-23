@@ -7,15 +7,15 @@ import { useBlock } from '../Blocks'
 export const Points: React.FC<any> = () => {
   //Hooks and DOM
   const points = useRef<any>()
-  const [cursorX, setCursorX] = useState<number>(0)
-  const [cursorY, setCursorY] = useState<number>(0)
   window.addEventListener("mousemove", (e) => {
-    setCursorX(e.clientX / window.innerWidth - 0.5)
-    setCursorY(-(e.clientY / window.innerHeight - 0.5))
+    const cursorX = (e.clientX / window.innerWidth - 0.5)
+    const cursorY = (e.clientY / window.innerHeight - 0.5)
+    if (points.current) {
+      points.current.position.x = cursorX / 2
+      points.current.position.y = cursorY / 2
+    }
   })
   if (points.current) {
-    points.current.position.x = cursorX / 2
-    points.current.position.y = cursorY / 2
     points.current.rotation.x = Math.PI / 4
     points.current.position.z = -10
   }
