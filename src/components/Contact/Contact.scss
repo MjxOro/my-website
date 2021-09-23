@@ -1,0 +1,29 @@
+@use '../../partials/variables' as *;
+
+.contact{
+  pointer-events: none;
+  &__title{
+    @include tablet{
+      font-size: 42px;
+    }
+    @include desktop{
+      font-size: 50px;
+    }
+    @include desktop-break{
+      font-size: 60px;
+    }
+  }
+  &__text{
+    width: 16rem;
+    font-size: 16px;
+    text-align: center;
+    @include tablet{
+      width: 24rem;
+      font-size: 24px;
+    }
+    @include desktop{
+      font-size: 32px;
+      width: 30rem
+    }
+  }
+}

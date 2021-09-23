@@ -4,7 +4,7 @@ import { Block, useBlock } from '../Blocks'
 import { Shadow } from '@react-three/drei'
 
 export const Intro: React.FC = () => {
-  const { contentMaxWidth, margin } = useBlock()
+  const { contentMaxWidth } = useBlock()
   return (
     <group position={[0, 0, 0]}>
       <Shadow scale={[contentMaxWidth, contentMaxWidth / 2.25, 1]} />

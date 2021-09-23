@@ -30,7 +30,14 @@ export const Cards: React.FC<any> = () => {
   const [card1, card2, card3, card4] = useLoader(TextureLoader, ['./rerun1.png', './rerun2.png', './rerun3.png', './rerun4.png'])
   const { mobile, margin, contentMaxWidth } = useBlock()
   return (
-    <group ref={cardRef} scale={mobile ? [0.75, 0.75, 0.75] : window.innerWidth < 1280 ? [1.25, 1.25, 0.5] : window.innerWidth < 1920 ? [1.3, 1.3, 0.5] : [1.75, 1.75, 0.5]}>
+    <group
+      ref={cardRef}
+      scale={mobile ? [0.75, 0.75, 0.75]
+        : window.innerWidth < 1280 ? [1.25, 1.25, 0.5]
+          : window.innerWidth < 1920 ? [1.3, 1.3, 0.5]
+            : window.innerWidth < 2560 ? [1.75, 1.75, 0.5]
+              : [2, 2, 0.5]}
+    >
       <Block factor={3.5}>
         <mesh
           position={mobile ? [-contentMaxWidth + (margin + 1), 4.5, 0]
@@ -120,7 +127,7 @@ export const Filler: React.FC<any> = () => {
   })
 
   return (
-    <Text ref={textRef} shadow fontSize={mobile ? 0.5 : window.innerWidth < 1280 ? 1 : 1.75} color="#C5C6C7" anchorX="center" anchorY="middle">
+    <Text ref={textRef} fontSize={mobile ? 0.5 : window.innerWidth < 1280 ? 1 : 1.75} color="#C5C6C7" anchorX="center" anchorY="middle">
       <MeshWobbleMaterial attach="material" factor={1} speed={0.75} />
       More Projects Soon!
     </Text>
