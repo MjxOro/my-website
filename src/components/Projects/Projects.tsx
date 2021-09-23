@@ -1,19 +1,20 @@
 import React, { useRef } from "react";
 import './Projects.scss'
-import { Html } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
+import { Html, Text, MeshWobbleMaterial } from "@react-three/drei";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { useBlock, Block } from "../Blocks"
 import { Plane } from "../Plane";
 import { FaGithubSquare } from "react-icons/fa";
 
-export const ProjectTransition: React.FC<any> = () => {
+export const ProjectTransition: React.FC<any> = ({ color }) => {
   const { canvasWidth, sectionHeight } = useBlock()
   return (
-    <Plane position={[0, -2, -3]} scale={[canvasWidth, sectionHeight * 2, 1]} color="#00222D" />
+    <Plane position={[0, -2, -3]} scale={[canvasWidth, sectionHeight * 2, 1]} color={color ? color : "#00222D"} />
   )
 
 }
+
 
 export const Cards: React.FC<any> = () => {
   const cardRef = useRef<any>()
@@ -100,5 +101,29 @@ export const Projects: React.FC<any> = () => {
         <FaGithubSquare className="projects__github" onClick={() => window.open("https://github.com/MjxOro/Re-Run")} />
       </Html>
     </group>
+  )
+}
+
+export const Filler: React.FC<any> = () => {
+  const textRef = useRef<any>()
+  const { mobile } = useBlock()
+  window.addEventListener("mousemove", (e) => {
+    const cursorX = (e.clientX / window.innerWidth - 0.5)
+    const cursorY = -(e.clientY / window.innerHeight - 0.5)
+    if (textRef.current) {
+      textRef.current.rotation.y = cursorX
+      textRef.current.rotation.x = -cursorY
+    }
+  })
+  useFrame(({ clock }) => {
+    textRef.current.position.z = Math.sin(clock.getElapsedTime() / 5)
+  })
+
+  return (
+    <Text ref={textRef} shadow fontSize={mobile ? 0.5 : window.innerWidth < 1280 ? 1 : 1.75} color="#C5C6C7" anchorX="center" anchorY="middle">
+      <MeshWobbleMaterial attach="material" factor={1} speed={0.75} />
+      More Projects Soon!
+    </Text>
+
   )
 }

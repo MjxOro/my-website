@@ -1,12 +1,20 @@
+import { MeshWobbleMaterial } from "@react-three/drei"
 
-
-export const Plane: React.FC<any> = ({ color, map, ...props }) => {
+export const Plane: React.FC<any> = ({ wobble, color, map, ...props }) => {
+  console.log(wobble)
   return (
     <>
-      <mesh {...props}>
-        <planeGeometry />
-        <meshStandardMaterial color={color} map={map} />
-      </mesh >
+      {wobble ?
+        <mesh {...props}>
+          <planeGeometry />
+          <MeshWobbleMaterial color={color} attach="material" factor={0.75} speed={2} />
+        </mesh >
+        :
+        <mesh {...props}>
+          <planeGeometry />
+          <meshStandardMaterial color={color} map={map} />
+        </mesh >
+      }
     </>
   )
 }
