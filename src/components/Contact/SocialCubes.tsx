@@ -101,7 +101,7 @@ export const SocialsCube: React.FC<any> = ({ children, color, ...props }) => {
           <div
             id="email"
             style={{ height: (mobile ? '4rem' : '8rem'), width: (mobile ? '4rem' : '8rem'), transform: (mobile ? 'translate(-2rem,-2rem)' : 'translate(-3.5rem,-4rem)'), cursor: 'pointer' }}
-            onClick={() => window.open("mailto:mattheweoro@gmail.com")}
+            onClick={() => window.location.href = "mailto:mattheweoro@gmail.com"}
             onMouseEnter={handleHoverOn}
             onMouseOut={handleHoverOff}
           />
